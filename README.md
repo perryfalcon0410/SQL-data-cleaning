@@ -90,7 +90,11 @@ Correct the spelling of divorced
     UPDATE club_member_info_cleaned 
     set marital_status = 'divorced'
     where marital_status = 'divored'
+Empty value change to Null
 
+	UPDATE club_member_info_changed
+ 	set marital_status = NULL
+  	where marital_status = ''
 Result
 |martial_status|marital_status|
 |--------------|--------------|
@@ -98,6 +102,6 @@ Result
 |married|married|
 |married|married|
 |divorced|divorced|
-|||
+||NULL|
 |married|married|
 |single|single|
