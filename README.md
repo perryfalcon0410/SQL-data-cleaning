@@ -22,7 +22,7 @@ Let's inspect the initial rows to analyze data in its original format
 ### Create a new table for cleaning
 Generate a new table for cleaning
 
-  CREATE TABLE club_member_info_cleaned (
+    CREATE TABLE club_member_info_cleaned (
 	full_name VARCHAR(50),
 	age INTEGER,
 	martial_status VARCHAR(50),
@@ -31,7 +31,7 @@ Generate a new table for cleaning
 	full_address VARCHAR(50),
 	job_title VARCHAR(50),
 	membership_date VARCHAR(50)
-  );
+    );
 
-  Insert into club_member_info_cleaned
-  select * from club_member_info;
+    Insert into club_member_info_cleaned
+    select * from club_member_info;
