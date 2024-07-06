@@ -32,6 +32,7 @@ Generate a new table for cleaning
 	job_title VARCHAR(50),
 	membership_date VARCHAR(50)
     );
-___
+Copy all values from original table to destinated table
+
     Insert into club_member_info_cleaned
     select * from club_member_info;
