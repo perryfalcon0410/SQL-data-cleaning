@@ -79,3 +79,25 @@ Result
 ||NULL|
 |288|NULL|
 |588|NULL|
+
+### Cleaning the marital status
+Change the column name to marital_status from martial_status
+
+    ALTER TABLE club_member_info_cleaned 
+    RENAME COLUMN martial_status TO marital_status
+Correct the spelling of divorced
+
+    UPDATE club_member_info_cleaned 
+    set marital_status = 'divorced'
+    where marital_status = 'divored'
+
+Result
+|martial_status|marital_status|
+|--------------|--------------|
+|divored|divorced|
+|married|married|
+|married|married|
+|divorced|divorced|
+|||
+|married|married|
+|single|single|
