@@ -69,9 +69,9 @@ Update ages to NULL if they are outside a reasonable range (e.g., ages > 120)
 Result
 |age|age_clean|
 |---|---------|
-|399|NULL|
+|40|40|
 |555|NULL|
-|544|NULL|
+|46|46|
 |499|NULL|
 |522|NULL|
 ||NULL|
