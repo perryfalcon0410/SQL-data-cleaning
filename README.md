@@ -36,3 +36,13 @@ Copy all values from original table to destinated table
 
     Insert into club_member_info_cleaned
     select * from club_member_info;
+
+## Cleaning data
+### Cleaning the name
+
+	Update club_member_info_cleaned 
+	set full_name = trim(full_name)
+
+ 	Update club_member_info_cleaned 
+	set full_name = TRIM(UPPER(SUBSTR(full_name, 1, 1)) ||LOWER(SUBSTR(full_name, 2, INSTR(full_name || ' ', ' ') - 1)) || UPPER(SUBSTR(full_name, INSTR(full_name || ' ', ' ') + 1, 1)) || LOWER(SUBSTR(full_name, INSTR(full_name || ' ', ' ') + 2)))
+
