@@ -92,7 +92,7 @@ Correct the spelling of divorced
     where marital_status = 'divored'
 Empty value change to Null
 
-	UPDATE club_member_info_changed
+	UPDATE club_member_info_cleaned
  	set marital_status = NULL
   	where marital_status = ''
 Result
