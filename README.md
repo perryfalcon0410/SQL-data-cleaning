@@ -60,3 +60,22 @@ Result
 |mendie alexandrescu|Mendie Alexandrescu|
 | fey kloss|Fey Kloss|
 
+### Cleaning the age
+Update ages to NULL if they are outside a reasonable range (e.g., ages > 120)
+
+    UPDATE club_member_info_cleaned 
+    SET age = NULL
+    WHERE age IS NOT NULL AND (age > 120 OR age < 0);
+Result
+|age|age_clean|
+|---|---------|
+|399||
+|555||
+|544||
+|499||
+|522||
+|||
+|277||
+|||
+|288||
+|588||
