@@ -46,3 +46,17 @@ Copy all values from original table to destinated table
  	Update club_member_info_cleaned 
 	set full_name = TRIM(UPPER(SUBSTR(full_name, 1, 1)) ||LOWER(SUBSTR(full_name, 2, INSTR(full_name || ' ', ' ') - 1)) || UPPER(SUBSTR(full_name, INSTR(full_name || ' ', ' ') + 1, 1)) || LOWER(SUBSTR(full_name, INSTR(full_name || ' ', ' ') + 2)))
 
+Result
+|full_name|full_name_clean|
+|---------|---------------|
+|addie lush|Addie Lush|
+|      ROCK CRADICK|Rock Cradick|
+|Sydel Sharvell|Sydel Sharvell|
+|Constantin de la cruz|Constantin De la cruz|
+|  Gaylor Redhole|Gaylor Redhole|
+|Wanda del mar       |Wanda Del mar|
+|Joann Kenealy|Joann Kenealy|
+|   Joete Cudiff|Joete Cudiff|
+|mendie alexandrescu|Mendie Alexandrescu|
+| fey kloss|Fey Kloss|
+
