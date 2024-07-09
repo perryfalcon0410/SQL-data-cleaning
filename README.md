@@ -105,3 +105,11 @@ Result
 ||NULL|
 |married|married|
 |single|single|
+
+### Cleaning the job title
+Change the empty job title to NULL value
+
+    UPDATE club_member_info_cleaned
+	set job_title = NULL
+	where job_title = ''
+ 
