@@ -114,4 +114,4 @@ Change the empty job title to NULL value
 	where job_title = ''
  
 ## Final result
-Final result is in the table *club_member_info_cleaned*
+Final result is in the table *club_member_info_cleaned* in `club_member.db` file
