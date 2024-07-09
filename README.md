@@ -113,3 +113,5 @@ Change the empty job title to NULL value
 	set job_title = NULL
 	where job_title = ''
  
+## Final result
+Final result is in the table *club_member_info_cleaned*
