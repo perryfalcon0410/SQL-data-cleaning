@@ -112,6 +112,50 @@ Change the empty job title to NULL value
     UPDATE club_member_info_cleaned
 	set job_title = NULL
 	where job_title = ''
+### Cleaning Duplicate
+Check duplicate rows
+
+ 	SELECT full_name, age, marital_status, email, phone, full_address, job_title, membership_date, count(*)
+	FROM club_member_info_cleaned cmic 
+	GROUP BY full_name, age, marital_status, email, phone, full_address, job_title, membership_date
+	HAVING count(*) >1
+
+Result
+|full_name|age|marital_status|email|phone|full_address|job_title|membership_date|count(*)|
+|---------|---|--------------|-----|-----|------------|---------|---------------|--------|
+|Erwin Huxter|25|married|ehuxterm0@marketwatch.com|704-295-3261|0 Homewood Road,Charlotte,North Carolina|Software Test Engineer III|9/29/2017|2|
+|Nicki Filliskirk|66|married|nfilliskirkd5@newsvine.com|410-848-2272|7657 Alpine Plaza,Baltimore,Maryland|Geologist IV|6/18/2021|2|
+|Tamqrah Dunkersley|36|single|tdunkersley8u@dedecms.com|651-939-2423|0 Colorado Terrace,Saint Paul,Minnesota|VP Sales|6/27/2016|2|
+
+Remove duplicate
+
+	-- Step 1: Create a temporary table
+	CREATE TEMPORARY TABLE temp_table AS
+	SELECT full_name, age, marital_status, email, phone, full_address, job_title, membership_date
+	FROM club_member_info_cleaned
+	WHERE 1=0;
  
+	/*The 1=0 condition is used to create an empty table
+	with the same structure as the club_member_info_cleaned table.
+	This ensures that the temporary table (temp_table) has the same columns but no rows initially.
+	*/
+ 
+	-- Step 2: Insert unique rows into the temporary table
+	INSERT INTO temp_table
+	SELECT full_name, age, marital_status, email, phone, full_address, job_title, membership_date
+	FROM club_member_info_cleaned
+	GROUP BY full_name, age, marital_status, email, phone, full_address, job_title, membership_date;
+
+	-- Step 3: Delete all rows from the original table
+	DELETE FROM club_member_info_cleaned;
+
+	-- Step 4: Insert the unique rows back into the original table
+	INSERT INTO club_member_info_cleaned
+	SELECT * FROM temp_table;
+
+	-- Step 5: Drop temp_table
+	DROP TABLE temp_table;
+
+
 ## Final result
 Final result is in the table *club_member_info_cleaned* in `club_member.db` file
